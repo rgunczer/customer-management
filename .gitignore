@@ -1,0 +1,94 @@
+# === Java / Maven / Gradle ===
+*.class
+*.jar
+*.war
+*.ear
+*.log
+
+# === IDEs ===
+# IntelliJ IDEA
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Eclipse
+.project
+.classpath
+.settings/
+.apt_generated/
+.factorypath
+
+# VS Code
+.vscode/
+
+# NetBeans
+nbproject/private/
+build/
+
+# === OS-specific ===
+.DS_Store
+Thumbs.db
+
+# === Build ===
+/target/
+/build/
+/out/
+
+# === Gradle ===
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+
+# === Maven ===
+.mvn/
+!**/mvnw
+!**/mvnw.cmd
+
+# === Logs and temp files ===
+*.log
+*.tmp
+*.bak
+*.swp
+*.swo
+*.orig
+*.rej
+
+# === Test output ===
+test-output/
+surefire-reports/
+jacoco.exec
+*.ec
+
+# === Spring Boot ===
+/.env
+.env.*
+application-local.yml
+application-local.properties
+application-test.yml
+application-test.properties
+
+# === Database ===
+*.h2.db
+*.mv.db
+*.sqlite
+*.db
+
+# === OS/package managers ===
+node_modules/
+npm-debug.log
+pnpm-debug.log
+.yarn/
+.pnpm-debug.log
+
+# === Docker ===
+**/.docker
+**/Dockerfile.*
+**/.env.docker
+
+# === Others (optional) ===
+/.idea_modules/
+/dist/
+/coverage/
+/logs/
+/tmp/
