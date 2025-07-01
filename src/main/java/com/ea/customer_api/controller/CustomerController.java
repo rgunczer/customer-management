@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.UUID;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,13 +24,13 @@ import lombok.extern.slf4j.Slf4j;
 @RequestMapping("/customers")
 public class CustomerController {
 
-    private final CustomerService customerService;
+    private final CustomerService service;
 
     @GetMapping("/{id}")
     public ResponseEntity<CustomerResponse> getById(@PathVariable UUID id) {
         log.info("getById [" + id + "]");
 
-        return customerService.findById(id)
+        return service.findById(id)
             .map(CustomerResponse::from)
             .map(ResponseEntity::ok)
             .orElse(ResponseEntity.notFound().build());
@@ -39,7 +40,7 @@ public class CustomerController {
     @GetMapping(params = "email")
     public ResponseEntity<List<CustomerResponse>> getByEmail(@RequestParam String email) {
         log.info("getByEmail [" + email + "]");
-        final var customers = customerService.getByEmail(email);
+        final var customers = service.getByEmail(email);
 
         if (customers.isEmpty()) {
             return ResponseEntity.notFound().build();
@@ -51,13 +52,22 @@ public class CustomerController {
     @GetMapping(params = "name")
     public ResponseEntity<List<CustomerResponse>> getByName(@RequestParam String name) {
         log.info("getByName [" + name + "]");
-        final var customers = customerService.getByName(name);
+        final var customers = service.getByName(name);
 
         if (customers.isEmpty()) {
             return ResponseEntity.notFound().build();
         }
 
         return ResponseEntity.ok(customers);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable UUID id) {
+        log.info("delete [" + id + "]");
+
+        service.deleteById(id);
+
+        return ResponseEntity.notFound().build();
     }
 
 }

@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.ea.customer_api.domain.dto.CustomerResponse;
@@ -42,7 +43,11 @@ public class CustomerService {
         return customers;
     }
 
-
+    public void deleteById(final UUID id) {
+        if (repository.existsById(id)) {
+            repository.deleteById(id);
+        }
+    }
 
 
 }
