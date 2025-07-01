@@ -38,6 +38,18 @@ curl localhost:8080/customers?email=alice@example.com
 curl http://localhost:8080/customers?name=Boba%20Fett
 ```
 
+## POST
+
+```bash
+curl -X POST http://localhost:8080/customers \
+  -H "Content-Type: application/json" \
+  -d '{
+        "name": "John Matrix",
+        "email": "matrix@example.com",
+        "annualSpend": 5500.75,
+        "lastPurchaseDate": "2025-03-01T15:30:00"
+      }'
+```
 
 ## DELETE
 

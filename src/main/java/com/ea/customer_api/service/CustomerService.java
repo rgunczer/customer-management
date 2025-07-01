@@ -4,9 +4,9 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import com.ea.customer_api.domain.dto.CustomerRequest;
 import com.ea.customer_api.domain.dto.CustomerResponse;
 import com.ea.customer_api.domain.model.Customer;
 import com.ea.customer_api.domain.repo.CustomerRepository;
@@ -41,6 +41,20 @@ public class CustomerService {
             .toList();
 
         return customers;
+    }
+
+    public CustomerResponse save(final CustomerRequest customerRequest) {
+        final var customer = new Customer();
+
+        customer.setId(null); // <-- explicit
+        customer.setEmail(customerRequest.email());
+        customer.setName(customerRequest.name());
+        customer.setAnnualSpend(customerRequest.annualSpend());
+        customer.setLastPurchaseDate(customerRequest.lastPurchaseDate());
+
+        final var customerSavedInDb = repository.save(customer);
+
+        return CustomerResponse.from(customerSavedInDb);
     }
 
     public void deleteById(final UUID id) {
