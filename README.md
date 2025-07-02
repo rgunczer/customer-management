@@ -72,3 +72,12 @@ curl -X PUT http://localhost:8080/customers/25463d35-38a7-4bec-947b-a3cbe108043a
 ```bash
  curl -X DELETE localhost:8080/customers/05818864-e18f-4f23-983c-bef0cd322ef7
 ```
+
+
+## Open API Spec
+
+Spring can generate this "onthefly" by visiting this url
+
+```
+http://localhost:8080/swagger-ui.html
+```
