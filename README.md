@@ -1,5 +1,21 @@
 # customer-management
-Yankee Zulu
+
+Application is developed in VSCode with VIM keybindings and Hyper color theme
+
+to  run the app in VSCode install the "Extension pack for Java" from Microsoft it will include other extensions
+
+Then open the `CustomerApiApplication.java` file and click on Run overlay above the main method
+
+System will start listening on default 8080 port
+
+On successful start look for a console message "READY-2-SERVE"
+
+To run it from terminal use the "classical" command
+
+```bash
+mvn spring-boot:run
+```
+
 
 ## Access the H2 database
 ```
