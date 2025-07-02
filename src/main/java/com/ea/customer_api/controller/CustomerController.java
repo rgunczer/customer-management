@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -76,7 +77,7 @@ public class CustomerController {
     // POST
 
     @PostMapping
-    public ResponseEntity<CustomerResponse> createCustomer(
+    public ResponseEntity<CustomerResponse> create(
         @Valid @RequestBody CustomerRequest customerRequest
     ) {
         final var savedCustomer = service.save(customerRequest);
@@ -88,6 +89,20 @@ public class CustomerController {
     // ----------------------------------------------------
     // PUT
 
+    @PutMapping("/{id}")
+    public ResponseEntity<CustomerResponse> update(
+        @PathVariable UUID id,
+        @Valid @RequestBody CustomerRequest newData
+    ) {
+        final var updated = service.update(id, newData);
+        if (updated == null) {
+            return ResponseEntity.notFound().build();
+        }
+
+        final var updatedCustomer = service.update(id, newData);
+
+        return ResponseEntity.ok(updatedCustomer);
+    }
 
     // ----------------------------------------------------
     // DELETE

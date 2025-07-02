@@ -1,17 +1,21 @@
 # customer-management
 Yankee Zulu
 
-
-## GET byId
-
-```bash
- curl localhost:8080/customers/c65e528e-c5a2-42ee-8678-5f6570f4881a
+## Access the H2 database
+```
+http://localhost:8080/h2-console
 ```
 
- if piped by "jq"
+## GET byId (note the UUID is re-generated each time app starts)
 
 ```bash
-  curl localhost:8080/customers/c65e528e-c5a2-42ee-8678-5f6570f4881a | jq
+curl localhost:8080/customers/c65e528e-c5a2-42ee-8678-5f6570f4881a
+```
+
+ if piped by `jq`
+
+```bash
+curl localhost:8080/customers/c65e528e-c5a2-42ee-8678-5f6570f4881a | jq
 ```
 
   the output is much nicer in terminal
@@ -49,6 +53,18 @@ curl -X POST http://localhost:8080/customers \
         "annualSpend": 5500.75,
         "lastPurchaseDate": "2025-03-01T15:30:00"
       }'
+```
+
+## PUT
+```bash
+curl -X PUT http://localhost:8080/customers/25463d35-38a7-4bec-947b-a3cbe108043a \
+-H "Content-Type: application/json" \
+-d '{
+  "name": "Robert Gunczer",
+  "email": "robert@example.com",
+  "annualSpend": 3500.75,
+  "lastPurchaseDate": "2025-06-01T10:00:00"
+}'
 ```
 
 ## DELETE
