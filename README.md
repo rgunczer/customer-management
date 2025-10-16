@@ -1,6 +1,7 @@
 # customer-management
 
-**Take-Home Project for EA:NorthAmerica Project**
+**Take-Home Project for EA:North America**
+
 
 Application is developed in VSCode with VIM keybindings and Hyper color theme
 
