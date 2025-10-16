@@ -1,5 +1,7 @@
 # customer-management
 
+**Take-Home Project for EA:NorthAmerica Project**
+
 Application is developed in VSCode with VIM keybindings and Hyper color theme
 
 to  run the app in VSCode install the "Extension pack for Java" from Microsoft it will include other extensions
